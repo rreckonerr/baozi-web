@@ -1,27 +1,26 @@
----
 language: node_js
 node_js:
-  - "8"
-
+- '8'
 sudo: false
 dist: trusty
-
 addons:
   chrome: stable
-
 cache:
   directories:
-    - $HOME/.npm
-
+  - "$HOME/.npm"
 env:
   global:
-    # See https://git.io/vdao3 for details.
-    - JOBS=1
-
+  - JOBS=1
 before_install:
-  - npm config set spin false
-
+- npm config set spin false
 script:
-  - npm run lint:hbs
-  - npm run lint:js
-  - npm test
+- npm run lint:hbs
+- npm run lint:js
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: tXHj0qVzklPRf81zqjdE17VzUj43HsIe2d/8H+jU149DMXJX3rb00g+5k08vWcogLFooV4EaOLWmgjxJuY/1Gawj+BlPONWSpiA+qU2+lZ6coo1qSF+GtaYG1UM6T9x1U7cO9IavJIuoXouhGVI/aqyLUDg/d9M+JQJ6RKmZsoQE4qT8pRICEBZzapTVwsaGAWwl14M0gAyXnXee6eV97+Ho8rW/iaIt/cvzc6ZbM72QGhe97i+2sIqW1Bmpqy3HqfTLPJCgvcyXY/CHuR2bjGdgK6xtRCtr9yOcEG68ZuBpOQfRi2skIbkiasIHUui+DW9ztMtL7Vn5ehF59hvCj7XtMfaXZSIEp0W2quUAnBUb0NsY2FOWnEWK98NpDAiP6n6es2QnfFBU6urvcW/LOMzTiqSp1THT5bITj3jSv1E5TeMeS6nHVnYJ1UY8XgFMqpiTxpwt6ZB7lyyB5EpjPQTCnvK948z/lthH5qVjzaniku23oeKDcK82fGynfTRq1iPTL8M6YMJC7eLDUI2jnvfAWWkYNttHgCVvKIaIxKpg98RPjwSZ/cYrhBtavPzUy9xqG/mJl5T+GNw9/+vXPkvneR7tBwVIvweH9XcKppvE60Pg6OlWssTOelQ1mTidawebuzC8yXMObWCsyvpWT1EvYFkIpQ642Myi0oiSvdw=
+  app: baozi-web
+  on:
+    repo: rreckonerr/baozi-web
